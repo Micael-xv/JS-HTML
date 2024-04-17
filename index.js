@@ -57,19 +57,26 @@ function addCard() {
         <class="col-12">
           <div class="corCards">
             <div class="card">
-              <div class="card-body" style="background-color: ${corCards}">
-                <span style="color: ${corTexto}">
+                <div class="card-body" style="background-color: ${corCards}">
+                  <button onclick="edText(${indice})" style="position:absolute; right: 20px;">Editar</button>
+                  <span style="color: ${corTexto}">
                   ${indice} - ${descricao}
-                </span>
-              </div>
+                  </span>
+                </div>  
             </div>
           </div>
         </div>
-      `;
+        `;
       divItens.appendChild(linha);  
   });
   input.value = ' ';
-  
+};
+
+function edText (indice) {
+  const txtEdit = prompt('Digite um novo texto: ');
+  itens[indice].descricao = txtEdit;
+  addCard();
+  addLocalStorage();
 };
 
 function excluir(_) {
